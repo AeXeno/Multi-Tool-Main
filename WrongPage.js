@@ -1,5 +1,6 @@
 var UI = document.createElement("div");
-UI.innerHTML = '<div id="NonSupportedSite" style="width:400px; left: 100px; top: 50px; background-color: #282828; outline: solid black 5px; position:absolute; z-index: 99999;">
+UI.innerHTML = '
+<div id="NonSupportedSite" style="width:400px; left: 100px; top: 50px; background-color: #282828; outline: solid black 5px; position:absolute; z-index: 99999;">
 	<h1 class="rainbow_text" ; style="text-align: center; font-size: 34px;">
 		<strong> Multi-Tool
 	</h1>
@@ -23,7 +24,7 @@ UI.innerHTML = '<div id="NonSupportedSite" style="width:400px; left: 100px; top:
         Quizlet [Soon]
       </h1>
 	<hr style="height:2px;border-width:0; background-color: gray">
-	<footer style="text-align: center; font-size: 11px; color: red"> If your seeing this, that means your not on a supported site idiot! </footer>
+	<footer style="text-align: center; font-size: 11px; color: red"> If your seeing this, that means your not on a supported site idiot! </footer>’
 	<style>
 	#Multi-Tool {
 		background-color: rgb(0, 0, 2);
@@ -60,4 +61,25 @@ UI.innerHTML = '<div id="NonSupportedSite" style="width:400px; left: 100px; top:
 	
 	</div>';
 
+function dragElement(e) {
+        var t = 0,
+                o = 0,
+                n = 0,
+                s = 0;
+
+        function i(e) {
+                (e = e || window.event).preventDefault(), n = e.clientX, s = e.clientY, document.onmouseup = a, document.onmousemove = r
+        }
+
+        function r(i) {
+                (i = i || window.event).preventDefault(), t = n - i.clientX, o = s - i.clientY, n = i.clientX, s = i.clientY, e.style.top = e.offsetTop - o + "px", e.style.left = e.offsetLeft - t + "px"
+        }
+
+        function a() {
+                document.onmouseup = null, document.onmousemove = null
+        }
+        document.getElementById(e.id + "header") ? document.getElementById(e.id + "header").onmousedown = i : e.onmousedown = i
+}
+
+dragElement(UI.firstElementChild);
 document.body.appendChild(UI);
